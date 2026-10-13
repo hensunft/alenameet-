@@ -2,7 +2,7 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { texts } from "../config/invitation";
 import { screenMotionProps, tapSpring } from "../lib/motion";
-import { Heart } from "./Heart";
+import { RanunculusIcon } from "./Florals";
 import { MovingNoButton } from "./MovingNoButton";
 
 interface WelcomeScreenProps {
@@ -33,12 +33,12 @@ export function WelcomeScreen({ onYes, onDecline }: WelcomeScreenProps) {
 
   return (
     <motion.main className="screen" {...screenMotionProps}>
-      <div className="card card-frame px-7 pt-11 pb-10 text-center sm:px-10 sm:pt-12 sm:pb-11">
-        <Heart className="mx-auto h-[18px] w-[18px] text-rose" />
+      <div className="card card-frame px-7 pt-9 pb-10 text-center sm:px-10 sm:pt-10 sm:pb-11">
+        <RanunculusIcon className="mx-auto h-9 w-9" />
 
         <h1
           ref={titleRef}
-          className="mx-auto mt-5 max-w-[300px] font-serif text-[34px] leading-[1.08] font-semibold text-balance text-ink sm:max-w-[320px] sm:text-[40px]"
+          className="mx-auto mt-4 max-w-[300px] font-serif text-[34px] leading-[1.08] font-semibold text-balance text-ink sm:max-w-[320px] sm:text-[40px]"
         >
           {texts.welcome.question}
         </h1>

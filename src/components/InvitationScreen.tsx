@@ -5,6 +5,7 @@ import { ADDRESS_MAX_LENGTH, invitationConfig, texts } from "../config/invitatio
 import { sendRsvp } from "../lib/api";
 import { formatDayMonth, formatWeekday } from "../lib/date";
 import { easeOut, tapSpring } from "../lib/motion";
+import { FloralSprig } from "./Florals";
 import { Hearted } from "./Hearted";
 
 interface InvitationScreenProps {
@@ -86,6 +87,19 @@ export function InvitationScreen({ revealed, onSuccess }: InvitationScreenProps)
       animate={revealed ? "shown" : "hidden"}
       aria-hidden={!revealed}
     >
+      {/* Веточка с пионом, ранункулюсом и бутонами роз, «заложенная» в уголок открытки */}
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-2 -left-4 w-[92px] min-[360px]:-left-3 min-[360px]:w-[104px] sm:-top-1 sm:-left-2 sm:w-[118px]"
+        style={{ rotate: -16 }}
+        variants={{
+          hidden: { opacity: 0, scale: 0.85, rotate: -26 },
+          shown: { opacity: 1, scale: 1, rotate: -16, transition: { duration: 0.9, ease: easeOut } },
+        }}
+      >
+        <FloralSprig className="h-auto w-full" />
+      </motion.div>
+
       <motion.p
         variants={item}
         className="text-center text-[11px] font-semibold tracking-[0.3em] text-rose-deep uppercase"

@@ -11,6 +11,7 @@ import {
 import { texts } from "../config/invitation";
 import { useViewportWidth } from "../hooks/useViewportWidth";
 import { easeIn, easeInOut, easeOut } from "../lib/motion";
+import { FloralSprig } from "./Florals";
 import { HEART_PATH, Heart } from "./Heart";
 import { Hearted } from "./Hearted";
 
@@ -240,6 +241,8 @@ export function EnvelopeAnimation({ phase, onPhaseChange, children }: EnvelopeAn
                   />
                   {/* Печать с сердечком */}
                   <motion.g style={{ opacity: sealOpacity }}>
+                    {/* Маленькая веточка любимых цветов под печатью */}
+                    <FloralSprig x={98} y={70} width={80} height={69} />
                     <circle cx="150" cy="96" r="17" fill={`url(#${ids}-seal)`} />
                     <circle cx="150" cy="96" r="13.5" fill="none" stroke="#FFFFFF" strokeOpacity="0.45" strokeWidth="0.8" />
                     <path d={HEART_PATH} fill="#FFFFFF" transform="translate(141.2 87.6) scale(0.275)" />
