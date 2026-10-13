@@ -57,7 +57,6 @@ export const texts = {
     submit: "Отправить",
     submitting: "Отправляю…",
     retry: "Отправить ещё раз",
-    privacyNote: "Адрес нужен только для организации встречи.",
     signature: "Рома ♡",
     errors: {
       empty: "Напиши, пожалуйста, адрес.",

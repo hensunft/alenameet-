@@ -31,7 +31,6 @@ const COUNTER_FROM = ADDRESS_MAX_LENGTH - 60;
 
 export function InvitationScreen({ revealed, onSuccess }: InvitationScreenProps) {
   const inputId = useId();
-  const noteId = useId();
   const errorId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const inFlight = useRef(false);
@@ -164,7 +163,7 @@ export function InvitationScreen({ revealed, onSuccess }: InvitationScreenProps)
             value={address}
             disabled={busy}
             aria-invalid={status === "error" && error !== null}
-            aria-describedby={`${noteId}${error ? ` ${errorId}` : ""}`}
+            aria-describedby={error ? errorId : undefined}
             onChange={(event) => {
               setAddress(event.target.value);
               if (status === "error" && error === t.errors.empty) {
@@ -176,16 +175,11 @@ export function InvitationScreen({ revealed, onSuccess }: InvitationScreenProps)
           />
         </div>
 
-        <div className="mt-2 flex min-h-[20px] items-start justify-between gap-3 px-1">
-          <p id={noteId} className="text-[12.5px] leading-snug text-ink-soft/90">
-            {t.privacyNote}
+        {length >= COUNTER_FROM && (
+          <p className="mt-2 px-1 text-right text-[12px] text-ink-soft/80 tabular-nums">
+            {length}/{ADDRESS_MAX_LENGTH}
           </p>
-          {length >= COUNTER_FROM && (
-            <span className="shrink-0 text-[12px] text-ink-soft/80 tabular-nums">
-              {length}/{ADDRESS_MAX_LENGTH}
-            </span>
-          )}
-        </div>
+        )}
 
         <AnimatePresence initial={false}>
           {error && (

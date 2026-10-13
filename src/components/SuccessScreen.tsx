@@ -3,34 +3,10 @@ import { texts } from "../config/invitation";
 import { easeOut } from "../lib/motion";
 import { Heart } from "./Heart";
 import { Hearted } from "./Hearted";
+import { Canopy } from "./Sky";
 
 /** Время спуска сердечка на парашюте */
 const DESCENT = 1.7;
-
-/** Маленький купол в бело-розовых тонах со стропами — намёк на парашютный спорт. */
-function Canopy() {
-  return (
-    <svg viewBox="0 0 100 84" className="h-full w-full overflow-visible" aria-hidden="true">
-      <g stroke="#DDA9BC" strokeWidth={0.7} strokeLinecap="round">
-        <line x1={7} y1={38} x2={41} y2={83} />
-        <line x1={28} y1={38} x2={46} y2={81} />
-        <line x1={72} y1={38} x2={54} y2={81} />
-        <line x1={93} y1={38} x2={59} y2={83} />
-      </g>
-      <path
-        d="M6 38 C 6 12 26 4 50 4 C 74 4 94 12 94 38 Q 83 31 72 38 Q 61 31 50 38 Q 39 31 28 38 Q 17 31 6 38 Z"
-        fill="#FFFFFF"
-      />
-      <path d="M28 38 Q 31 12 50 4 L 50 38 Q 39 31 28 38 Z" fill="#F7CFDC" />
-      <path d="M72 38 Q 69 12 50 4 C 74 4 94 12 94 38 Q 83 31 72 38 Z" fill="#F7CFDC" />
-      <g fill="none" stroke="#EAB3C6" strokeWidth={0.8} strokeLinejoin="round">
-        <path d="M6 38 C 6 12 26 4 50 4 C 74 4 94 12 94 38 Q 83 31 72 38 Q 61 31 50 38 Q 39 31 28 38 Q 17 31 6 38 Z" />
-        <path d="M28 38 Q 31 12 50 4 Q 69 12 72 38" />
-        <path d="M50 4 L 50 38" />
-      </g>
-    </svg>
-  );
-}
 
 export function SuccessScreen() {
   const reduceMotion = useReducedMotion();
