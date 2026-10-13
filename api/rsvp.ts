@@ -141,8 +141,10 @@ async function sendToTelegram(token: string, chatId: string, text: string): Prom
     });
 
     if (!response.ok) {
-      // Логируем только код ответа — без текста сообщения и адреса.
-      console.error(`[rsvp] Telegram API responded with status ${response.status}`);
+      // Логируем код и пояснение Telegram (например, «chat not found») — без текста сообщения и адреса.
+      const details = (await response.json().catch(() => null)) as { description?: unknown } | null;
+      const description = typeof details?.description === "string" ? `: ${details.description.slice(0, 200)}` : "";
+      console.error(`[rsvp] Telegram API responded with status ${response.status}${description}`);
       return false;
     }
 
@@ -168,6 +170,7 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   if (!isSameOrigin(request)) {
+    console.error("[rsvp] Request rejected: Origin does not match Host");
     return fail(403, "forbidden");
   }
 
